@@ -1,0 +1,432 @@
+/*sign up*/
+
+.signup {
+    text-align: center;
+    position: relative;
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1.5%;
+}
+
+.signupbutton {
+    color: white;
+    border-radius: 30%;
+    zoom: 1;
+    cursor: pointer;
+    font-size: 20px;
+    font: bold 13px;
+    overflow: visible;
+}
+
+.signupbutton a {
+    color: #115674
+}
+
+
+/*sign in*/
+
+.signin {
+    text-align: center;
+    position: relative;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.signinbutton {
+    color: white;
+    border-radius: 10%;
+    zoom: 1;
+    cursor: pointer;
+    font: bold 13px;
+    font-size: 20px;
+    overflow: visible;
+}
+
+.signinbutton a {
+    color: #115674;
+}
+
+.separator {
+    height: 50px;
+    z-index: 1;
+    width: 100%;
+}
+
+fieldset {
+    position: relative;
+    width: fit-content;
+    padding-top: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: #115674;
+}
+
+footer {
+    text-align: center;
+}
+
+.fixed-footer {
+    width: 100%;
+    float: left;
+}
+
+
+/*css for home*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: whitesmoke;
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    color: white;
+}
+
+.introclick {
+    font-size: 20px;
+    padding: 8px;
+    margin: 2px;
+    border-radius: 10px;
+    border: 2px solid rgb(140, 140, 255);
+    font-family: verdana;
+}
+
+.introclick a {
+    color: #115894;
+}
+
+.separator {
+    height: 50px;
+    z-index: 1;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    left: 0px;
+    z-index: 3;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 10%;
+    background-color: #115894;
+    font-family: verdana, sans-serif;
+}
+
+.logo,
+.logo a {
+    color: rgb(225, 225, 225);
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-family: verdana;
+    padding: 0px;
+    margin: 0px 10px;
+    margin-left: 40px;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgb(225, 225, 225);
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a:hover {
+    color: black;
+    list-style: none;
+}
+
+.burger:hover {
+    opacity: 0.8;
+    background-color: black;
+    border-radius: 15px;
+}
+
+.burger {
+    margin-right: 10px;
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 28px;
+    height: 4px;
+    background-color: white;
+    margin: 5px;
+    border-radius: 2px;
+    transition: all 0.4s ease-in;
+}
+
+.change {
+    text-align: center;
+}
+
+a {
+    color: #115674
+}
+
+h1,
+p {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 80px;
+    padding-bottom: 0px;
+}
+
+li {
+    color: #115674;
+    list-style: none;
+}
+
+input {
+    font-size: 20px;
+    padding: 8px;
+    margin: 2px;
+    border-radius: 10px;
+    border: 2px solid rgb(140, 140, 255);
+    font-family: verdana;
+}
+
+input:hover,
+input:focus {
+    font-size: 20px;
+    padding: 6px;
+    margin: 2px;
+    border-radius: 10px;
+    border: 4px solid rgb(140, 140, 255);
+    background-color: rgb(230, 230, 230);
+}
+
+button {
+    font-size: 20px;
+    padding: 8px;
+    margin: 2px;
+    border-radius: 10px;
+    border: 2px solid rgb(140, 140, 255);
+    font-family: verdana;
+    align-items: center;
+    text-align: center;
+}
+
+button:hover,
+button:focus {
+    font-size: 20px;
+    padding: 6px;
+    margin: 2px;
+    border-radius: 10px;
+    border: 4px solid rgb(140, 140, 255);
+    background-color: rgb(230, 230, 230);
+}
+
+.intro {
+    padding-top: 200px;
+    padding-bottom: 230px;
+    text-align: center;
+    background-image: url('../images/image6.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.specificmentor li,
+h2,
+span,
+img {
+    text-align: center;
+}
+
+.specificmentor {
+    text-align: center;
+}
+
+.click a {
+    text-align: center;
+    color: black;
+}
+
+.click button {
+    text-align: center;
+}
+
+.booksession {
+    border-radius: 30%;
+    zoom: 1;
+    cursor: pointer;
+    font-size: 20px;
+    font: bold 13px;
+    overflow: visible;
+}
+
+.booksession a {
+    color: black
+}
+
+.image {
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 10px;
+}
+
+.mentee {
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    text-indent: 12em;
+}
+
+.mentee img {
+    text-align: center;
+}
+
+.mentors {
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+    margin: 40px auto 0px auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.mentor {
+    background-color: white;
+    background-blend-mode: all;
+    padding: 20px 20px 10px;
+    width: fit-content;
+    margin: auto
+}
+
+.mentorview {
+    text-align: center;
+}
+
+.mentees {
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+
+.mentee button,
+strong {
+    text-align: center;
+    color: black;
+}
+
+.mentee {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 48%;
+}
+
+@media screen and (min-width :1024px) {
+    .nav-links {
+        width: 60%;
+    }
+    .mentors {
+        padding-top: 5%;
+        padding-bottom: 10%;
+    }
+}
+
+@media screen and (max-width:850px) {
+    body {
+        overflow-X: hidden;
+    }
+    .nav-links {
+        position: absolute;
+        right: 0;
+        height: 80vh;
+        top: 6vh;
+        background-color: #115674;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 20%;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in;
+        z-index: 2;
+        border-radius: 5px;
+    }
+    .nav-link li {
+        opacity: 0;
+    }
+    .burger {
+        display: block;
+        z-index: 1;
+    }
+    .nav-active {
+        transform: translateX(0%);
+    }
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px)
+    }
+    .toggle .line2 {
+        opacity: 0;
+    }
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-6px, -7px)
+    }
+}
+
+@media screen and (max-width:640px) {
+    .nav,
+    .nav li {
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+    .intro {
+        text-align: center;
+        height: auto;
+        width: 100%;
+    }
+    .mentors {
+        display: block;
+    }
+}
