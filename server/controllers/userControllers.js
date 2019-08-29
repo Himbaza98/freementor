@@ -2,17 +2,17 @@ const users = require('../data/users');
 const schema = require('../validators/validations');
 const Joi = require('joi');
 
-const SignUp = (req, res) => {
+const SignUp = (req, res) => { //check sign up details if valid with joi
     const { email, firstname, lastname, password, address, bio, expertise, occupation } = req.body;
 
-    let result = Joi.validate({ email, first_name, last_name, password, is_admin }, schema.user_sign_up);
+    let result = Joi.validate({ email, firstname, lastname, password }, schema.user_sign_up);
     if (result.error) {
         return res.status(400).json({ status: 400, message: `${result.error.details[0].message}` });
     };
-
+    // check if the user exists
     const emailfound = users.find(user => user.email == email)
     if (!emailfound) {
-        console.log("resulys");
+        console.log("results");
 
         users.push({ email, firstname, lastname, password, address, bio, expertise, occupation })
         return res.status(200).send({
@@ -29,5 +29,4 @@ const SignUp = (req, res) => {
         error: "The user with email arleady exists"
     })
 };
-
-module.exports = SignUp;
+module.exports = SignUp
