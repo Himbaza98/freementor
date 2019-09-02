@@ -23,7 +23,7 @@ const users = [{
     address: "gikondo",
     expertise: "dav",
     occupation: "web designer",
-    is_admin: true,
+    isAdmin: true,
     role: "mentee"
 }];
 
