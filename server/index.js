@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 
 
 const app = express();
-const port = process.env.PORT || 800;
+const port = process.env.PORT || 506;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

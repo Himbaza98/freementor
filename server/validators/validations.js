@@ -28,6 +28,11 @@ const schema = {
         is_admin: Joi.string().valid(true, false),
     }),
 
+    roles: Joi.object().keys({
+        role_id: Joi.number().required(),
+        status: Joi.string().valid('mentee', 'mentor')
+    })
+
 }
 
 module.exports = schema
