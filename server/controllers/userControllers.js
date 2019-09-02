@@ -6,9 +6,7 @@ import { checkThepassword } from '../helpers/bcryptPwd';
 import { getToken } from '../helpers/tokens';
 
 
-
 class User {
-
     static SignUp(req, res) { //check sign up details if valid with joi
         const { email, firstname, lastname, password, address, bio, expertise, occupation, } = req.body;
         let result = Joi.validate({ email, firstname, lastname, password }, schema.user_sign_up);
@@ -58,7 +56,51 @@ class User {
 
 
     };
-  
+    static SignIn(req, res) {
+        //check if sign in data are full
+        const { email, password } = req.body;
+        let result = Joi.validate({ email, password }, schema.user_sign_in);
+        if (result.error) {
+            return res.status(400).json({ status: 400, message: `${result.error.details[0].message}` });
+        };
+        //check if the user exists
+        const emailfound = users.find(user => user.email === email);
+
+        if (!emailfound) {
+            return res.status(404).json({ status: 404, message: { error: 'There is no such user with this email' } });
+        }
+        if (!checkThepassword(password, emailfound.password)) {
+            return res.status(401).json({
+                status: 401,
+                data: {
+                    error: 'enter the correct password'
+                }
+            });
+        }
+
+        const { id, firstname, lastname, is_admin } = emailfound;
+        const token = getToken({
+            id,
+            firstname,
+            lastname,
+            is_admin
+        })
+
+
+        return res.status(200).json({
+            status: 200,
+            message: "user found",
+            data: {
+                id,
+                firstname,
+                lastname,
+                token
+            },
+
+
+
+        });
+    }
 }
 
 
