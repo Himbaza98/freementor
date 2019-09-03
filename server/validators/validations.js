@@ -18,6 +18,7 @@ const schema = {
         password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
         token: [Joi.string(), Joi.number()],
         is_admin: Joi.string().valid(true, false),
+        user_status: Joi.string().valid(true, false),
 
 
     }),
@@ -26,6 +27,7 @@ const schema = {
         password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
         token: [Joi.string(), Joi.number()],
         is_admin: Joi.string().valid(true, false),
+        user_status: Joi.string().valid(true, false),
     }),
 
     roles: Joi.object().keys({
