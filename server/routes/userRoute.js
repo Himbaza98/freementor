@@ -4,6 +4,7 @@ import adminController from '../controllers/adminController';
 import tokenValidator from '../middlewares/tokenValidator';
 
 
+
 const router = express.Router();
 
 router.post('/auth/user/signup', userController.SignUp);
