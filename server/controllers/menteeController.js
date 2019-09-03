@@ -1,5 +1,7 @@
 import users from '../data/users';
-
+import mentors from '../data/mentors';
+import { hashPassword } from '../helpers/bcryptPwd';
+import { getToken } from '../helpers/tokens';
 class view {
 
     static viewmentors(req, res) {
@@ -18,6 +20,26 @@ class view {
             return res.status(403).send({
                 status: 403,
                 message: 'unauthorised access!'
+            });
+
+        }
+
+    };
+    static viewspecificmentor(req, res) {
+        const userId = req.params.mentor_id;
+        const mentor = users.filter(user => user.id == userId);
+
+        if (mentor) {
+            return res.status(200).send({
+                status: 200,
+                data: mentor
+            })
+        }
+
+        if (!mentor) {
+            return res.status(400).send({
+                status: 400,
+                message: 'mentor not found!'
             });
 
         }
