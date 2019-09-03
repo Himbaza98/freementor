@@ -29,11 +29,11 @@
 .signin {
     text-align: center;
     position: relative;
-    width: 60%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 80px;
-    margin-bottom: 80px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-top: 8%;
 }
 
 .signinbutton {
@@ -114,6 +114,10 @@ header {
     width: 100%;
 }
 
+.spacing {
+    padding-top: 18%
+}
+
 nav {
     display: flex;
     position: fixed;
@@ -123,7 +127,7 @@ nav {
     z-index: 3;
     justify-content: space-between;
     align-items: center;
-    min-height: 10%;
+    min-height: 5%;
     background-color: #115894;
     font-family: verdana, sans-serif;
 }
@@ -143,7 +147,7 @@ nav {
 .nav-links {
     display: flex;
     justify-content: space-around;
-    width: 50%;
+    width: 38%;
 }
 
 .nav-links a {
@@ -205,6 +209,11 @@ h2 {
 li {
     color: #115674;
     list-style: none;
+}
+
+img {
+    width: 259px;
+    height: 259px;
 }
 
 input {
@@ -314,7 +323,7 @@ img {
 
 .mentors {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     text-align: center;
     margin: 40px auto 0px auto;
     padding-top: 5%;
@@ -326,7 +335,8 @@ img {
     background-blend-mode: all;
     padding: 20px 20px 10px;
     width: fit-content;
-    margin: auto
+    margin: auto;
+    margin-bottom: 3%;
 }
 
 .mentorview {
@@ -335,10 +345,9 @@ img {
 
 .mentees {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     text-align: center;
     margin-top: 40px;
-    margin-bottom: 0px;
 }
 
 .mentee button,
@@ -352,12 +361,10 @@ strong {
     padding-top: 20px;
     padding-bottom: 20px;
     width: 48%;
+    margin-bottom: 4%;
 }
 
 @media screen and (min-width :1024px) {
-    .nav-links {
-        width: 60%;
-    }
     .mentors {
         padding-top: 5%;
         padding-bottom: 10%;
