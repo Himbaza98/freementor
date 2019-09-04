@@ -1,10 +1,11 @@
 import users from '../data/users';
-import mentors from '../data/mentors';
 import { hashPassword } from '../helpers/bcryptPwd';
-import { getToken } from '../helpers/tokens';
-class view {
+import { getToken } from '../helpers/Tokens';
 
-    static viewmentors(req, res) {
+
+class View {
+
+    static ViewMentors(req, res) {
 
         const mentors = users.filter(user => user.role == "mentor")
         const user_status = users.filter(user => user.user_status === true)
@@ -25,7 +26,7 @@ class view {
         }
 
     };
-    static viewspecificmentor(req, res) {
+    static ViewSpecificMentor(req, res) {
         const userId = req.params.mentor_id;
         const mentor = users.filter(user => user.id == userId);
 
@@ -46,4 +47,5 @@ class view {
 
     }
 }
-export default view;
+
+export default View;
