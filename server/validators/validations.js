@@ -16,16 +16,14 @@ const Schema = {
         lastName: Joi.string().min(3).max(30).required(),
         email: Joi.string().email({ minDomainAtoms: 2 }).required(),
         password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
-        token: [Joi.string(), Joi.number()],
         IsAdmin: Joi.string().valid(true, false),
         user_status: Joi.string().valid(true, false),
 
 
     }),
     user_sign_in: Joi.object().keys({
-        Email: Joi.string().email({ minDomainAtoms: 2 }).required(),
+        email: Joi.string().email({ minDomainAtoms: 2 }).required(),
         password: Joi.string().required(),
-        token: [Joi.string(), Joi.number()],
         IsAdmin: Joi.string().valid(true, false),
         user_status: Joi.string().valid(true, false),
     }),
@@ -34,7 +32,7 @@ const Schema = {
         status: Joi.string().valid('mentee', 'mentor')
     }),
     sessions: Joi.object().keys({
-        sessionId: Joi.number(),
+        mentorId: Joi.number().required(),
         questions: Joi.string().min(3).max(30).required(),
     }),
 }

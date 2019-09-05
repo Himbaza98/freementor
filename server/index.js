@@ -15,4 +15,6 @@ app.use('/api/v1', menteeRoute);
 app.use('/api/v1', sessionRoute);
 
 
-app.listen(port, console.log(`you are listening on port ${port}...`))
+app.listen(port, console.log(`you are listening on port ${port}...`));
+
+export default app;
