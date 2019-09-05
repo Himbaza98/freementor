@@ -1,7 +1,7 @@
 import users from '../data/users';
 import Schema from '../validators/validations';
 import Joi from 'joi';
-import { getToken, decoded } from '../helpers/Tokens';
+import { getToken, decoded } from '../helpers/tokens';
 import bodyParser from 'body-parser';
 import sessions from '../data/sessions'
 
@@ -9,7 +9,7 @@ import sessions from '../data/sessions'
 class Mentorship {
 
 
-    static BookSession(req, res) {
+    static bookSession(req, res) {
         const user_status = users.find(user => user.user_status === true)
         if (user_status) {
             let { mentorId } = req.body;
@@ -32,31 +32,31 @@ class Mentorship {
             if (!mentor) {
                 return res.status(404).json({
                     status: 404,
-                    message: "the session to book was not found"
+                    message: "The session to book was not found"
                 })
             };
             const payload = decoded(req);
 
-            const Email = payload.Email;
+            const email = payload.email;
 
             const menteeId = payload.id;
 
             const newSession = {
                 menteeId,
-                Email,
+                email,
                 sessionId,
                 mentorId,
-                Questions,
-                status: "pending"
+                questions,
+                status: "Pending"
             }
 
-            return res.status(201).json({ status: 201, message: "session Booked", data: newSession })
+            return res.status(201).json({ status: 201, message: "session booked", data: newSession })
         }
 
         return res.status(401).json({ status: 401, message: "You are unauthorized for this operation. Sign in first" })
     };
 
-    static AcceptSession(req, res) {
+    static acceptSession(req, res) {
 
         const { sessionId } = req.params;
         const payload = decoded(req);
@@ -90,8 +90,8 @@ class Mentorship {
 
         const {
             user_id: menteeId,
-            Email: menteeEmail,
-            Questions
+            email: menteeEmail,
+            questions
         } = sessions.find(userInfo => userInfo.session_Id === parseInt(sessionId));
 
         const data = {
@@ -100,7 +100,7 @@ class Mentorship {
             mentorId,
             menteeId,
             menteeEmail,
-            Questions,
+            questions,
             status: "Accepted"
         }
 
@@ -113,7 +113,7 @@ class Mentorship {
         })
 
     };
-    static RejectSession(req, res) {
+    static rejectSession(req, res) {
 
         const { sessionId } = req.params;
         const payload = decoded(req);
@@ -147,8 +147,8 @@ class Mentorship {
 
         const {
             user_id: menteeId,
-            Email: menteeEmail,
-            Questions
+            email: menteeEmail,
+            questions
         } = sessions.find(userInfo => userInfo.session_Id === parseInt(sessionId));
 
         const data = {
@@ -157,13 +157,13 @@ class Mentorship {
             mentorId,
             menteeId,
             menteeEmail,
-            Questions,
-            status: "rejected"
+            questions,
+            status: "Rejected"
         }
 
         return res.status(200).send({
             status: 200,
-            message: 'request rejected',
+            message: 'Request rejected',
             data: data,
 
 

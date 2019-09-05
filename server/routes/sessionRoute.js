@@ -1,14 +1,14 @@
 import express from 'express';
 import Mentorship from '../controllers/sessionController';
-import TokenValidator from '../middlewares/TokenValidator';
+import tokenValidator from '../middlewares/tokenValidator';
 
 
 
 
 const router = express.Router();
 
-router.post('/sessions', TokenValidator, Mentorship.BookSession)
-router.patch('/sessions/:sessionId/accept', TokenValidator, Mentorship.AcceptSession)
-router.patch('/sessions/:sessionId/reject', TokenValidator, Mentorship.RejectSession)
+router.post('/sessions', tokenValidator, Mentorship.bookSession)
+router.patch('/sessions/:sessionId/accept', tokenValidator, Mentorship.acceptSession)
+router.patch('/sessions/:sessionId/reject', tokenValidator, Mentorship.rejectSession)
 
 export default router;

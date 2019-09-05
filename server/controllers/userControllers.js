@@ -3,33 +3,33 @@ import Schema from '../validators/validations';
 import Joi from 'joi';
 import { hashPassword } from '../helpers/bcryptPwd';
 import { checkThePassword } from '../helpers/bcryptPwd';
-import { getToken } from '../helpers/Tokens';
+import { getToken } from '../helpers/tokens';
 
 
 class User {
     static SignUp(req, res) { //check sign up details if valid with joi
-        const { Email, Firstname, Lastname, Password, address, bio, expertise, occupation, } = req.body;
-        let result = Joi.validate({ Email, Firstname, Lastname, Password }, Schema.user_sign_up);
+        const { email, firstName, lastName, password, address, bio, expertise, occupation, } = req.body;
+        let result = Joi.validate({ email, firstName, lastName, password }, Schema.user_sign_up);
         if (result.error) {
             return res.status(400).json({ status: 400, message: `${result.error.details[0].message}` });
         };
         // check if the user exists
-        const Emailfound = users.find(user => user.Email == Email)
-        if (!Emailfound) {
+        const emailFound = users.find(user => user.email == email)
+        if (!emailFound) {
 
             let id = users.length + 1;
-            let payload = { id, Firstname, IsAdmin: false, Email, role };
+            let payload = { id, firstName, IsAdmin: false, Email, role };
 
-            //hash the Password and generate the Token
-            const encryptedPassword = hashPassword(Password);
+            //hash the Password and generate the token
+            const encryptedPassword = hashPassword(password);
 
-            let Token = getToken(payload);
+            let token = getToken(payload);
             users.push({
                 id,
-                Email,
-                Firstname,
-                Lastname,
-                Password: encryptedPassword,
+                email,
+                firstName,
+                lastName,
+                password: encryptedPassword,
                 address,
                 bio,
                 expertise,
@@ -39,7 +39,7 @@ class User {
             })
 
 
-            let newUser = { id, Email, Firstname, Lastname, Token };
+            let newUser = { id, email, firstName, lastName, token };
             return res.status(201).send({
                 status: 201,
                 message: "user created successfully",
@@ -58,18 +58,18 @@ class User {
     };
     static SignIn(req, res) {
         //check if sign in data are full
-        const { Email, Password } = req.body;
-        let result = Joi.validate({ Email, Password }, Schema.user_sign_in);
+        const { email, password } = req.body;
+        let result = Joi.validate({ email, password }, Schema.user_sign_in);
         if (result.error) {
             return res.status(400).json({ status: 400, message: `${result.error.details[0].message}` });
         };
         //check if the user exists
-        const Emailfound = users.find(user => user.Email === Email);
+        const emailFound = users.find(user => user.email === email);
 
-        if (!Emailfound) {
-            return res.status(404).json({ status: 404, message: { error: 'There is no such user with this Email' } });
+        if (!emailFound) {
+            return res.status(404).json({ status: 404, message: { error: 'There is no such user with this email' } });
         }
-        if (!checkThePassword(Password, Emailfound.Password)) {
+        if (!checkThePassword(password, emailFound.password)) {
             return res.status(401).json({
                 status: 401,
                 data: {
@@ -78,13 +78,13 @@ class User {
             });
         }
 
-        const { id, Firstname, Lastname, IsAdmin } = Emailfound;
-        const Token = getToken({
+        const { id, firstName, lastName, IsAdmin } = emailFound;
+        const token = getToken({
             id,
-            Firstname,
-            Lastname,
+            firstName,
+            lastName,
             IsAdmin,
-            Email
+            email
         })
 
 
@@ -93,9 +93,9 @@ class User {
             message: "user found",
             data: {
                 id,
-                Firstname,
-                Lastname,
-                Token
+                firstName,
+                lastName,
+                token
             },
 
 

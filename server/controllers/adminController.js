@@ -2,7 +2,7 @@ import users from '../data/users';
 
 class Admin {
 
-    static changetomentor(req, res) {
+    static changeToMentor(req, res) {
         const { IsAdmin, id } = req.decode;
         const { userId } = req.params;
 

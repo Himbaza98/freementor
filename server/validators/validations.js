@@ -4,19 +4,19 @@ import Joi from 'joi';
 const Schema = {
     user: Joi.object().keys({
         user_id: Joi.number().min(3).max(5),
-        Firstname: Joi.string().min(3).max(30).required(),
-        Lastname: Joi.string().min(3).max(30).required(),
-        Email: Joi.string().email({ minDomainAtoms: 2 }).required(),
-        Password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
+        firstName: Joi.string().min(3).max(30).required(),
+        lastName: Joi.string().min(3).max(30).required(),
+        email: Joi.string().email({ minDomainAtoms: 2 }).required(),
+        password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
         IsAdmin: Joi.string().valid(true, false),
 
     }),
     user_sign_up: Joi.object().keys({
-        Firstname: Joi.string().min(3).max(30).required(),
-        Lastname: Joi.string().min(3).max(30).required(),
-        Email: Joi.string().email({ minDomainAtoms: 2 }).required(),
-        Password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
-        Token: [Joi.string(), Joi.number()],
+        firstName: Joi.string().min(3).max(30).required(),
+        lastName: Joi.string().min(3).max(30).required(),
+        email: Joi.string().email({ minDomainAtoms: 2 }).required(),
+        password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
+        token: [Joi.string(), Joi.number()],
         IsAdmin: Joi.string().valid(true, false),
         user_status: Joi.string().valid(true, false),
 
@@ -24,8 +24,8 @@ const Schema = {
     }),
     user_sign_in: Joi.object().keys({
         Email: Joi.string().email({ minDomainAtoms: 2 }).required(),
-        Password: Joi.string().required(),
-        Token: [Joi.string(), Joi.number()],
+        password: Joi.string().required(),
+        token: [Joi.string(), Joi.number()],
         IsAdmin: Joi.string().valid(true, false),
         user_status: Joi.string().valid(true, false),
     }),
@@ -35,7 +35,7 @@ const Schema = {
     }),
     sessions: Joi.object().keys({
         sessionId: Joi.number(),
-        Questions: Joi.string().min(3).max(30).required(),
+        questions: Joi.string().min(3).max(30).required(),
     }),
 }
 

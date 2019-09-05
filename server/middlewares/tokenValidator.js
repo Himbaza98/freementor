@@ -1,26 +1,26 @@
-import jwt from 'jsonwebToken';
+import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
 
 
 let validateToken = (req, res, next) => {
-    let Token = req.headers['x-access-Token'] || req.headers['authorization'];
-    if (!Token) {
+    let token = req.headers['x-access-token'] || req.headers['authorization'];
+    if (!token) {
         return res.status(401).send({
             status: 401,
             error: "Unauthorized access"
         })
     }
-    if (Token.startsWith('Bearer ')) {
+    if (token.startsWith('Bearer ')) {
 
-        Token = Token.slice(7, Token.length);
+        token = token.slice(7, token.length);
     }
 
-    if (Token) {
-        jwt.verify(Token, process.env.SECRET_KEY, (err, decode) => {
+    if (token) {
+        jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
             if (err) {
                 return res.send({
-                    Error: 'Token Error',
+                    Error: 'token Error',
                     message: err
                 });
 
@@ -32,7 +32,7 @@ let validateToken = (req, res, next) => {
     } else {
         return res.send({
             success: false,
-            message: 'Auth Token is not supplied'
+            message: 'Auth token is not supplied'
         });
     }
 };
