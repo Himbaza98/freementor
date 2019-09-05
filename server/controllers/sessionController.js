@@ -14,8 +14,8 @@ class Mentorship {
         if (user_status) {
             let { mentorId } = req.body;
 
-            const { Questions } = req.body;
-            let result = Joi.validate({ Questions }, Schema.sessions);
+            const { questions } = req.body;
+            let result = Joi.validate({ questions }, Schema.sessions);
 
             if (result.error) {
                 return res.status(400).json({
