@@ -5,7 +5,7 @@ import { getToken } from '../helpers/Tokens';
 
 class View {
 
-    static ViewMentors(req, res) {
+    static ViewMentors(res) {
 
         const mentors = users.filter(user => user.role == "mentor")
         const user_status = users.filter(user => user.user_status === true)

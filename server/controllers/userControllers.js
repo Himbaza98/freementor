@@ -1,45 +1,45 @@
 import users from '../data/users';
-import schema from '../validators/validations';
+import Schema from '../validators/validations';
 import Joi from 'joi';
 import { hashPassword } from '../helpers/bcryptPwd';
-import { checkThepassword } from '../helpers/bcryptPwd';
-import { getToken } from '../helpers/tokens';
+import { checkThePassword } from '../helpers/bcryptPwd';
+import { getToken } from '../helpers/Tokens';
 
 
 class User {
     static SignUp(req, res) { //check sign up details if valid with joi
-        const { email, firstname, lastname, password, address, bio, expertise, occupation, } = req.body;
-        let result = Joi.validate({ email, firstname, lastname, password }, schema.user_sign_up);
+        const { Email, Firstname, Lastname, Password, address, bio, expertise, occupation, } = req.body;
+        let result = Joi.validate({ Email, Firstname, Lastname, Password }, Schema.user_sign_up);
         if (result.error) {
             return res.status(400).json({ status: 400, message: `${result.error.details[0].message}` });
         };
         // check if the user exists
-        const emailfound = users.find(user => user.email == email)
-        if (!emailfound) {
+        const Emailfound = users.find(user => user.Email == Email)
+        if (!Emailfound) {
 
             let id = users.length + 1;
-            let payload = { id, firstname, is_admin: false };
+            let payload = { id, Firstname, IsAdmin: false, Email, role };
 
-            //hash the password and generate the token
-            const encryptedPassword = hashPassword(password);
+            //hash the Password and generate the Token
+            const encryptedPassword = hashPassword(Password);
 
-            let token = getToken(payload);
+            let Token = getToken(payload);
             users.push({
                 id,
-                email,
-                firstname,
-                lastname,
-                password: encryptedPassword,
+                Email,
+                Firstname,
+                Lastname,
+                Password: encryptedPassword,
                 address,
                 bio,
                 expertise,
                 occupation,
-                is_admin: false,
+                IsAdmin: false,
                 role: 'mentee'
             })
 
 
-            let newUser = { id, email, firstname, lastname, token };
+            let newUser = { id, Email, Firstname, Lastname, Token };
             return res.status(201).send({
                 status: 201,
                 message: "user created successfully",
@@ -50,7 +50,7 @@ class User {
         }
         return res.status(401).send({
             status: 401,
-            error: "The user with email arleady exists"
+            error: "The user with Email arleady exists"
         });
 
 
@@ -58,32 +58,33 @@ class User {
     };
     static SignIn(req, res) {
         //check if sign in data are full
-        const { email, password } = req.body;
-        let result = Joi.validate({ email, password }, schema.user_sign_in);
+        const { Email, Password } = req.body;
+        let result = Joi.validate({ Email, Password }, Schema.user_sign_in);
         if (result.error) {
             return res.status(400).json({ status: 400, message: `${result.error.details[0].message}` });
         };
         //check if the user exists
-        const emailfound = users.find(user => user.email === email);
+        const Emailfound = users.find(user => user.Email === Email);
 
-        if (!emailfound) {
-            return res.status(404).json({ status: 404, message: { error: 'There is no such user with this email' } });
+        if (!Emailfound) {
+            return res.status(404).json({ status: 404, message: { error: 'There is no such user with this Email' } });
         }
-        if (!checkThepassword(password, emailfound.password)) {
+        if (!checkThePassword(Password, Emailfound.Password)) {
             return res.status(401).json({
                 status: 401,
                 data: {
-                    error: 'enter the correct password'
+                    error: 'enter the correct Password'
                 }
             });
         }
 
-        const { id, firstname, lastname, is_admin } = emailfound;
-        const token = getToken({
+        const { id, Firstname, Lastname, IsAdmin } = Emailfound;
+        const Token = getToken({
             id,
-            firstname,
-            lastname,
-            is_admin
+            Firstname,
+            Lastname,
+            IsAdmin,
+            Email
         })
 
 
@@ -92,9 +93,9 @@ class User {
             message: "user found",
             data: {
                 id,
-                firstname,
-                lastname,
-                token
+                Firstname,
+                Lastname,
+                Token
             },
 
 

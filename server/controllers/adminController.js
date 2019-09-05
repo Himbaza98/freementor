@@ -3,10 +3,10 @@ import users from '../data/users';
 class Admin {
 
     static changetomentor(req, res) {
-        const { is_admin, id } = req.decode;
+        const { IsAdmin, id } = req.decode;
         const { userId } = req.params;
 
-        if (!is_admin) {
+        if (!IsAdmin) {
             return res.status(403).send({
                 status: 403,
                 message: 'Unauthorized. Only admin can access this page.'

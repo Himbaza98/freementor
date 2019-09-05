@@ -1,30 +1,30 @@
 import bcrypt from 'bcrypt';
-import { getToken } from '../helpers/tokens';
+import { getToken } from '../helpers/Tokens';
 import { hashPassword } from '../helpers/bcryptPwd';
 const users = [{
         id: 1,
-        email: "bookchretien@gmail.com",
-        firstname: "himbaza",
-        lastname: "chretien",
+        Email: "bookchretien@gmail.com",
+        Firstname: "himbaza",
+        Lastname: "chretien",
         address: "kigali",
         bio: "hazard",
         expertise: "dabroo",
         occupation: "killla",
-        password: hashPassword('mypassword'),
-        is_admin: false,
+        Password: hashPassword('myPassword'),
+        IsAdmin: false,
         role: "mentee",
         user_status: true
 
     }, {
         id: 2,
-        email: "jean@gmail.com",
-        firstname: "jean",
-        lastname: "erre",
-        password: hashPassword("adminpass"),
+        Email: "jean@gmail.com",
+        Firstname: "jean",
+        Lastname: "erre",
+        Password: hashPassword("adminpass"),
         address: "gikondo",
         expertise: "dav",
         occupation: "web designer",
-        is_admin: true,
+        IsAdmin: true,
         role: "mentor",
         user_status: true
     },
@@ -32,14 +32,14 @@ const users = [{
 
     {
         id: 3,
-        email: "chret@gmail.com",
-        firstname: "mugish",
-        lastname: "ejack",
-        password: hashPassword("adminpass"),
+        Email: "chret@gmail.com",
+        Firstname: "mugish",
+        Lastname: "ejack",
+        Password: hashPassword("adminpass"),
         address: "gikondo",
         expertise: "dav",
         occupation: "web designer",
-        is_admin: false,
+        IsAdmin: false,
         role: "mentor",
         user_status: true
     }
