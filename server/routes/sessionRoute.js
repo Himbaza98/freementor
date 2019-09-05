@@ -8,6 +8,6 @@ import TokenValidator from '../middlewares/TokenValidator';
 const router = express.Router();
 
 router.post('/sessions', TokenValidator, Mentorship.BookSession)
-
+router.patch('/sessions/:sessionId/accept', TokenValidator, Mentorship.AcceptSession)
 
 export default router;

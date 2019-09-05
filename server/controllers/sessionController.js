@@ -56,6 +56,64 @@ class Mentorship {
         return res.status(401).json({ status: 401, message: "You are unauthorized for this operation. Sign in first" })
     };
 
+    static AcceptSession(req, res) {
+
+        const { sessionId } = req.params;
+        const payload = decoded(req);
+        const { id } = payload;
+        if (!id) {
+
+            return res.status(403).send({
+                status: 403,
+                message: 'Unauthorized. Only mentor can access this page.'
+            })
+        }
+
+        if (isNaN(sessionId)) {
+            return res.status(400).send({
+                status: 400,
+                message: 'sessionId can only be numbers. Please enter a number for the sessionId.'
+            });
+
+        }
+        const ok = sessions.find(session => session.session_Id === parseInt(sessionId));
+
+        if (!ok) {
+            return res.status(404).send({
+                status: 404,
+                message: 'session can not be found'
+            })
+        }
+
+
+        const mentorId = payload.id;
+
+        const {
+            user_id: menteeId,
+            Email: menteeEmail,
+            Questions
+        } = sessions.find(userInfo => userInfo.session_Id === parseInt(sessionId));
+
+        const data = {
+
+            sessionId,
+            mentorId,
+            menteeId,
+            menteeEmail,
+            Questions,
+            status: "Accepted"
+        }
+
+        return res.status(200).send({
+            status: 200,
+            message: 'request accepted',
+            data: data,
+
+
+        })
+
+    }
 }
+
 
 export default Mentorship;
