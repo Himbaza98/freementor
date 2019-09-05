@@ -20,7 +20,7 @@ let validateToken = (req, res, next) => {
         jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
             if (err) {
                 return res.send({
-                    Error: 'Token Error',
+                    Error: 'token Error',
                     message: err
                 });
 

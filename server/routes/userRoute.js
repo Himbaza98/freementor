@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.post('/auth/user/signup', userController.SignUp);
 router.post('/auth/user/signin', userController.SignIn);
-router.patch('/user/:userId', tokenValidator, adminController.changetomentor);
+router.patch('/user/:userId', tokenValidator, adminController.changeToMentor);
 
 export default router;
