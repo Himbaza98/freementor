@@ -11,14 +11,14 @@ class User {
         const { email, firstName, lastName, password, address, bio, expertise, occupation, } = req.body;
         let result = Joi.validate({ email, firstName, lastName, password }, Schema.user_sign_up);
         if (result.error) {
-            return res.status(400).json({ status: 400, message: `${result.error.details[0].message}` });
+            return res.status(400).send({ status: 400, message: `${result.error.details[0].message}` });
         };
         // check if the user exists
         const emailFound = users.find(user => user.email == email)
         if (!emailFound) {
 
             let id = users.length + 1;
-            let payload = { id, firstName, IsAdmin: false, Email, role };
+            let payload = { id, firstName, IsAdmin: false, email, role: "mentee" };
 
             //hash the Password and generate the token
             const encryptedPassword = hashPassword(password);

@@ -29,13 +29,27 @@ const users = [{
         user_status: true
     },
 
+    {
+        id: 7,
+        email: "john@gmail.com",
+        firstName: "jean",
+        lastName: "erre",
+        password: hashPassword("adminpass"),
+        address: "gikondo",
+        expertise: "dav",
+        occupation: "web designer",
+        IsAdmin: false,
+        role: "mentor",
+        user_status: true
+    },
+
 
     {
         id: 3,
-        email: "chret@gmail.com",
+        email: "peter@gmail.com",
         firstName: "mugish",
         lastName: "ejack",
-        Password: hashPassword("adminpass"),
+        Password: hashPassword("notadminpass"),
         address: "gikondo",
         expertise: "dav",
         occupation: "web designer",

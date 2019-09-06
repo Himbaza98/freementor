@@ -10,51 +10,48 @@ class Mentorship {
 
 
     static bookSession(req, res) {
-        const user_status = users.find(user => user.user_status === true)
-        if (user_status) {
-            let { mentorId } = req.body;
+        let { mentorId } = req.body;
 
-            const { questions } = req.body;
-            let result = Joi.validate({ questions }, Schema.sessions);
+        const { questions } = req.body;
+        let result = Joi.validate({ questions, mentorId }, Schema.sessions);
 
-            if (result.error) {
-                return res.status(400).json({
-                    status: 400,
-                    message: `${result.error.details[0].message}`
-                });
+        if (result.error) {
+            return res.status(400).json({
+                status: 400,
+                message: `${result.error.details[0].message}`
+            });
 
-            };
-            let sessionId = sessions.length + 1;
-            const userId = mentorId;
+        };
+        let sessionId = sessions.length + 1;
+        const userId = mentorId;
 
-            const mentor = users.find(user => user.id == userId);
+        const mentor = users.find(user => user.id == userId);
 
-            if (!mentor) {
-                return res.status(404).json({
-                    status: 404,
-                    message: "The session to book was not found"
-                })
-            };
-            const payload = decoded(req);
+        if (!mentor) {
+            return res.status(404).json({
+                status: 404,
+                message: "The session to book was not found"
+            })
+        };
+        const payload = decoded(req);
 
-            const email = payload.email;
+        const email = payload.email;
 
-            const menteeId = payload.id;
+        const menteeId = payload.id;
 
-            const newSession = {
-                menteeId,
-                email,
-                sessionId,
-                mentorId,
-                questions,
-                status: "Pending"
-            }
-
-            return res.status(201).json({ status: 201, message: "session booked", data: newSession })
+        const newSession = {
+            menteeId,
+            email,
+            sessionId,
+            mentorId,
+            questions,
+            status: "Pending"
         }
+        sessions.push(newSession);
+        return res.status(201).json({ status: 201, message: "session booked", data: newSession })
 
-        return res.status(401).json({ status: 401, message: "You are unauthorized for this operation. Sign in first" })
-    };
+    }
+
 
     static acceptSession(req, res) {
 
@@ -76,7 +73,7 @@ class Mentorship {
             });
 
         }
-        const ok = sessions.find(session => session.session_Id === parseInt(sessionId));
+        const ok = sessions.find(session => session.sessionId === parseInt(sessionId));
 
         if (!ok) {
             return res.status(404).send({
@@ -89,10 +86,10 @@ class Mentorship {
         const mentorId = payload.id;
 
         const {
-            user_id: menteeId,
+            userId: menteeId,
             email: menteeEmail,
             questions
-        } = sessions.find(userInfo => userInfo.session_Id === parseInt(sessionId));
+        } = sessions.find(userInfo => userInfo.sessionId === parseInt(sessionId));
 
         const data = {
 
